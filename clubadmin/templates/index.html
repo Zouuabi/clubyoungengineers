@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Club Jeunes Ingénieurs</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            background-color: #0083cb;
+            position: fixed;
+            left: 0;
+            top: 0;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #ed174c;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 30px;
+        }
+
+        .content h1 {
+            color: #0083cb;
+            font-size: 36px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #ed174c;
+            font-size: 28px;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section ul li:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .action-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ed174c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .action-btn:hover {
+            background-color: #c4113e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="#groupes">Groupes</a>
+        <a href="#enfants">Enfants</a>
+        <a href="#presences">Présences</a>
+        <a href="#paiements">Paiements</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1>Welcome to the Dashboard</h1>
+
+        <!-- Groupes Section -->
+        <div class="section" id="groupes">
+            <h2>Groupes</h2>
+            <ul>
+                {% for groupe in groupes %}
+                    <li>{{ groupe }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Add New Groupe</a>
+        </div>
+
+        <!-- Enfants Section -->
+        <div class="section" id="enfants">
+            <h2>Enfants</h2>
+            <ul>
+                {% for enfant in enfants %}
+                    <li>{{ enfant }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Add New Enfant</a>
+        </div>
+
+        <!-- Présences Section -->
+        <div class="section" id="presences">
+            <h2>Présences</h2>
+            <ul>
+                {% for presence in presences %}
+                    <li>{{ presence }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Mark Attendance</a>
+        </div>
+
+        <!-- Paiements Section -->
+        <div class="section" id="paiements">
+            <h2>Paiements</h2>
+            <ul>
+                {% for paiement in paiements %}
+                    <li>{{ paiement }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Add Payment</a>
+        </div>
+    </div>
+
+</body>
+</html>
