@@ -23,11 +23,13 @@ from django.urls import path
 urlpatterns = [ 
     path('add-programme/', add_programme, name='add_programme'),
     path('add-group/', add_group, name='add_group'),
-    path('', programmes, name='programmes'),
+    path('programmes', programmes, name='programmes'),
     path('groupes/', groupes, name='groupes'),
     path('enfants/', children_list, name='enfants'),
     path('presences/', presences, name='presences'),
     path('paiements/', paiements, name='paiements'),
+
+    path('',index,name = 'index'),
 
 
     path('add-group/', add_group, name='add_group'),
