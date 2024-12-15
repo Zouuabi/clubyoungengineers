@@ -65,8 +65,8 @@ def add_child(request):
         form = ChildForm()
     return render(request, 'add-child.html', {'form': form})
 
-def index (request):
-    return render(request,"index.html")
+# def index (request):
+#     return render(request,"index.html")
 def children_list(request):
     children = Child.objects.all()
     return render(request, 'enfants.html', {'children': children})
