@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h1>Groupes</h1>
+    
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'add_group' %}" class="btn-submit" style="width: auto; text-align: center;">Add Group</a>
+    </div>
+
+    {% if groups %}
+      <ul style="list-style: none; padding: 0;">
+        {% for group in groups %}
+          <li style="margin-bottom: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+            <strong style="color: #0083cb; font-size: 20px;">{{ group.name }}</strong>
+            <p style="margin: 5px 0 0; color: #333; font-size: 16px;">Schedule: {{ group.schedule }}</p>
+            <div>
+                <a href="" style="margin-right: 10px;">Modify</a>
+                <!-- {% url 'delete_group' group.id %} -->
+                <a href="" style="color: red;">Delete</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p style="text-align: center; color: #666; font-size: 18px;">No groups available. Please add one.</p>
+    {% endif %}
+  </div>
+{% endblock %}

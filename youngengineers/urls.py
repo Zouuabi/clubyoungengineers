@@ -20,8 +20,20 @@ from clubadmin.views import *
 from django.contrib import admin
 from django.urls import path
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("home/" , home , name ="home"),
-    path("dashboard/" , dashboard , name ="dashbord")
+urlpatterns = [ 
+    path('add-programme/', add_programme, name='add_programme'),
+    path('add-group/', add_group, name='add_group'),
+    path('', programmes, name='programmes'),
+    path('groupes/', groupes, name='groupes'),
+    path('enfants/', children_list, name='enfants'),
+    path('presences/', presences, name='presences'),
+    path('paiements/', paiements, name='paiements'),
+
+
+    path('add-group/', add_group, name='add_group'),
+    path('modify-group/<int:group_id>/', modify_group, name='modify_group'),
+    path('delete-group/<int:group_id>/', delete_group, name='delete_group'),
+    
+    path('add-child/', add_child, name='add_child'),
+    
 ]

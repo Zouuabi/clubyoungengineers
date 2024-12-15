@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="form-container">
+    <h1>Programmes</h1>
+    
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'add_programme' %}" class="btn-submit" style="width: auto; text-align: center;">Add Programme</a>
+    </div>
+
+    {% if programmes %}
+      <ul style="list-style: none; padding: 0;">
+        {% for program in programmes %}
+          <li style="margin-bottom: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+            <strong style="color: #0083cb; font-size: 20px;">{{ program.name }}</strong>
+            <p style="margin: 5px 0 0; color: #333; font-size: 16px;">Duration: {{ program.duration }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p style="text-align: center; color: #666; font-size: 18px;">No programmes available. Please add one.</p>
+    {% endif %}
+  </div>
+{% endblock %}

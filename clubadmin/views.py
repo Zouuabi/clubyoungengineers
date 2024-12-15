@@ -1,25 +1,79 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-
-def home(request):
-    return HttpResponse("Hello , Sarroura ! ")
+from django.shortcuts import redirect, render
+from .models import Child, Programme, Group
+from .forms import ProgrammeForm, GroupForm, ChildForm
 
 
-
-
-
-def dashboard(request):
-    # Sample data (you will fetch real data from the database)
-    groupes = ['Group 1', 'Group 2', 'Group 3']
-    enfants = ['Child 1', 'Child 2', 'Child 3']
-    presences = ['Present', 'Absent', 'Present']
-    paiements = ['Paid', 'Unpaid', 'Paid']
-    
+def programmes (request): 
+    programmes = Programme.objects.all()
     context = {
-        'groupes': groupes,
-        'enfants': enfants,
-        'presences': presences,
-        'paiements': paiements
+        "programmes":programmes
     }
-    return render(request, 'index.html', context)
+    return render(request,"programmes.html", context)
 
+def add_programme(request):
+    if request.method == 'POST':
+        form = ProgrammeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(programmes)
+            
+    else:
+        form = ProgrammeForm()
+    
+    return render(request, 'add_programme.html', {'form': form})
+
+
+
+def groupes(request):
+    groups = Group.objects.all()
+    return render(request, 'groupes.html', {'groups': groups})
+
+
+def add_group(request):
+    if request.method == 'POST':
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('groupes')
+    else:
+        form = GroupForm()
+    return render(request, 'add_group.html', {'form': form})
+
+def modify_group(request, group_id):
+    group = get_object(Group, id=group_id)
+    if request.method == 'POST':
+        form = GroupForm(request.POST, instance=group)
+        if form.is_valid():
+            form.save()
+            return redirect('groups_list')
+    else:
+        form = GroupForm(instance=group)
+    return render(request, 'modify_group.html', {'form': form})
+
+def delete_group(request, group_id):
+    group = get_object_or_404(Group, id=group_id)
+    group.delete()
+    return redirect('groups_list')
+
+def add_child(request):
+    if request.method == 'POST':
+        form = ChildForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(children_list)
+    else:
+        form = ChildForm()
+    return render(request, 'add-child.html', {'form': form})
+
+
+
+def children_list(request):
+    children = Child.objects.all()
+    return render(request, 'enfants.html', {'children': children})
+
+
+def presences(request):
+    return render(request, 'presences.html')
+
+def paiements(request):
+    return render(request, 'paiements.html')

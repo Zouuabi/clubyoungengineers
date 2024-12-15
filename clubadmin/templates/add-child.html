@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h1 style="text-align: center; color: #333;">Add a Child</h1>
+    <form method="POST" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+      {% csrf_token %}
+      
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="id_first_name" style="display: block; font-weight: bold; color: #555; margin-bottom: 5px;">First Name</label>
+        {{ form.first_name }}
+      </div>
+
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="id_last_name" style="display: block; font-weight: bold; color: #555; margin-bottom: 5px;">Last Name</label>
+        {{ form.last_name }}
+      </div>
+
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="id_group" style="display: block; font-weight: bold; color: #555; margin-bottom: 5px;">Associated Group</label>
+        {{ form.group}}
+      </div>
+
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="id_birth_date" style="display: block; font-weight: bold; color: #555; margin-bottom: 5px;">Date of Birth</label>
+        {{ form.birth_date}}
+      </div>
+
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="id_school_level" style="display: block; font-weight: bold; color: #555; margin-bottom: 5px;">School Level</label>
+        {{ form.school_level}}
+      </div>
+
+      <button type="submit" class="btn-submit" style="width: 100%; background-color: #0083cb; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+        Save Child Profile
+      </button>
+    </form>
+  </div>
+{% endblock %}

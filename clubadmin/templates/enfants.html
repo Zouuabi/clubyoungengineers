@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h1 style="text-align: center; color: #333;">Listes des enfants</h1>
+    <div style="margin-bottom: 20px;">
+      <a href="{% url 'add_child' %}" class="btn-submit" style="width: auto; text-align: center;">Ajouter un enfant</a>
+    </div>
+
+    {% if children %}
+      <div style="margin-bottom: 20px;">
+        <ul style="list-style: none; padding: 0;">
+          {% for child in children %}
+            <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+              <strong style="font-size: 18px; color: #333;">{{ child.first_name }} {{ child.last_name }}</strong>
+              <p style="margin: 5px 0 0; color: #555;">Group: {{ child.group.name }}</p>
+              <p style="margin: 5px 0 0; color: #555;">Date of Birth: {{ child.birth_date }}</p>
+              <p style="margin: 5px 0 0; color: #555;">School Level: {{ child.school_level }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% else %}
+      <p style="text-align: center; color: #666; font-size: 18px;">No children available. Please add one.</p>
+    {% endif %}
+  </div>
+{% endblock %}

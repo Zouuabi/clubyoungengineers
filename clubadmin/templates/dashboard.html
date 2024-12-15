@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Club Jeunes Ingénieurs</title>
+    
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="#groupes">Groupes</a>
+        <a href="#enfants">Enfants</a>
+        <a href="#presences">Présences</a>
+        <a href="#paiements">Paiements</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1>Welcome to the Dashboard</h1>
+
+        <!-- Groupes Section -->
+        
+
+        <!-- Enfants Section -->
+        
+
+        <!-- Présences Section -->
+        <div class="section" id="presences">
+            <h2>Présences</h2>
+            <ul>
+                {% for presence in presences %}
+                    <li>{{ presence }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Mark Attendance</a>
+        </div>
+
+        <!-- Paiements Section -->
+        <div class="section" id="paiements">
+            <h2>Paiements</h2>
+            <ul>
+                {% for paiement in paiements %}
+                    <li>{{ paiement }}</li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="action-btn">Add Payment</a>
+        </div>
+    </div>
+
+</body>
+</html>
